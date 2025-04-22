@@ -1,0 +1,51 @@
+---
+title: "Configuration"
+description: "Learn how authentication works in Electrify and how to configure it."
+publishedAt: 2025-01-11
+order: 1
+status: "published"
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula magna vitae nunc sagittis, at gravida lorem efficitur.
+
+Si aperias configurationem globalem in `src/configuration.ts`, invenies
+objectum `auth`:
+
+```tsx title="configuration.ts"
+import type { Provider } from '@supabase/gotrue-js/src/lib/types';
+
+auth: {
+  requireEmailConfirmation: false,
+  providers: {
+    emailPassword: true,
+    phoneNumber: false,
+    emailLink: false,
+    oAuth: ['google'] as Provider[],
+  },
+}
+```
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+1. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+2. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+## Verificatio Email Requirere
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium:
+
+```ts
+auth: {
+  requireEmailConfirmation: false,
+}
+```
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+
+## Emails Per Supabase
+
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.
+
+Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam: [http://localhost:54324/](http://localhost:54324/). Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
