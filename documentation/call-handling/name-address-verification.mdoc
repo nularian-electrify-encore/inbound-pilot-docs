@@ -1,0 +1,130 @@
+---
+title: "Right Party Verification"
+description: "Right Party Verification (RPV) is the process of collecting and verifying identifying information from a caller to confirm that they are the patient associated with the account."
+publishedAt: 2025-04-22
+order: 2010
+status: "published"
+---
+
+This document outlines the steps and logic used to gather and verify caller information.
+
+---
+
+## Inbound Calling Number
+All calls selected for the pilot are selected based on the inbound calling phone number with a matching phone number on an account in RMeX that is not a hospital number. For the pilot, this will be considered one piece of verification data. That is, it's inherent that the calling phone matches a number in RMeX as a basis for being selected for the pilot.
+
+## Step 1: Gather Identifying Information
+
+In the initial step, the AI assistant **only gathers** information without performing verification. The assistant will:
+
+- Ask the caller if they are the patient on the account.
+- Request the caller's **first and last name**.
+- Request the caller's **date of birth**.
+- Request the caller's **full address**, including:
+  - Street number
+  - Street name
+  - City
+  - State
+  - ZIP code
+
+---
+
+## Step 2: Verifying the Information
+
+Not all collected information is used for verification purposes. Below is a breakdown of each data point and how it's handled:
+
+### Patient Status
+- **Purpose**: Determines the caller's path through the system.
+- **Verification**: *Not used for verification.*
+- **Logic**:
+  - If the caller **is not** the patient, they are transferred to a live representative after their intent is captured.
+  - If the caller **is** the patient, the AI continues assisting them after their intent is captured.
+
+---
+
+### First and Last Name
+- **Purpose**: Used for verification.
+- **Verification**: *Yes, via phonetic similarity algorithm.*
+
+**Algorithm Details:**
+- An algorithm evaluates whether the name provided is **phonetically similar** to the name on file.
+- Each comparison is scored on a **0 to 1 scale**.
+- A score **≥ 0.85** indicates that the patient name on the account **IS** phonetically similar to the name provided by the caller and should be accepted as part of the verification process even if the spelling is different, the name verified slot should be set to **Y**. 
+- A score **< 0.85** indicates that the patient name on the account **IS NOT** phonetically similar to the name provided by the caller and should **NOT** be accepted as part of the verification process, the name verified slot should be set to **N**.
+
+**Examples:**
+- `"Lin"` vs. `"Lynn"` → High score (e.g., 0.91) → Result: Verified (Y)
+- `"Lin"` vs. `"Moore"` → Low score (e.g., 0.52) → Result: Not Verified (N)
+
+---
+
+### Date of Birth
+- **Purpose**: Collected for record-keeping.
+- **Verification**: *Not used for verification.*
+
+---
+
+### Address
+- **Purpose**: Used for verification.
+- **Verification**: *Yes, via multi-step comparison.*
+
+**Address Verification Logic:**
+- Address verification uses a multi-path approach to match the address provided by the caller and the address on the patient account. Below are the possible comparison paths:
+
+  Path 1 - All components match exactly
+
+  Path 2 - Only street name differs
+
+  Path 3 - Street and house number differ
+
+  Path 4 - City/State/Zip differ
+
+  Path 5 - Using Smarty Streets for standardization
+
+  Path 6 - Using fuzzy matching for all components
+
+- A score **≥ 0.80** indicates that the patient address on the account **IS** similar enough to the address provided by the caller and should be accepted as part of the verification process even if the spelling is different, the address verified slot should be set to **Y**. 
+- A score **< 0.80** indicates that the patient address on the account **IS NOT** similar enough to the address provided by the caller and should **NOT** be accepted as part of the verification process, the address verified slot should be set to **N**.
+
+**Examples:**
+- `"15 Bee Street, Frank, MA 02038"` vs. `"15 Beech St, Franklin, MA 02038"` → High score (e.g., 0.96) → Result: Verified (Y)
+- `"20 Beech St #1, Framingham, MA 01702"` vs. `"15 Beech St, Franklin, MA 02038"` → Low score (e.g., 0.79) → Result: Not Verified (N)
+
+---
+
+## Summary
+
+| Information Type   | Used for Verification  | Notes                                                                 |
+|--------------------|------------------------|-----------------------------------------------------------------------|
+| Inbound Number     | ✅ Yes                 | Calling inbound number that gets a match in RMeX                      |
+| Patient Status     | ❌ No                  | Determines call routing, not identity                                 |
+| First & Last Name  | ✅ Yes                 | Phonetic algorithm with 0.85 threshold                                |
+| Date of Birth      | ❌ No                  | Collected but not used in verification                                |
+| Address            | ✅ Yes                 | Multi-path comparison with 0.80 threshold                             |
+
+---
+
+## Verification Results
+
+Once all relevant identifying information has been gathered and processed, the next step in the call flow will be determined by the results of the verification process. The verification results are based on whether the **name** and **address** meet their respective criteria.
+
+### Possible Outcomes
+
+- **Verified**  
+  The caller's name and address meet or exceed the verification thresholds. The AI assistant proceeds with assisting the caller.
+
+- **Not Verified**  
+  One or more pieces of information do not meet verification criteria. The caller is either:
+  - Transferred to a live representative for further verification, or
+  - Asked to provide their information again.
+
+### Example Scenarios
+
+| Name Verified | Address Verified | Result          | Action Taken                              |
+|---------------|------------------|-----------------|-------------------------------------------|
+| ✅ Yes        | ✅ Yes            | ✅ Verified     | AI continues assisting the caller         |
+| ❌ No         | ✅ Yes            | ❌ Not Verified | Caller asked to repeat name               |
+| ✅ Yes        | ❌ No             | ❌ Not Verified | Caller asked to repeat address            |
+| ❌ No         | ❌ No             | ❌ Not Verified | Caller transferred to a live rep          |
+
+---
