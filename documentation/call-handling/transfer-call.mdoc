@@ -6,23 +6,55 @@ order: 2000
 status: "published"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+This document outlines the scenarios in which a call may be transferred during Electrify's handling process. Transfer reasons are categorized by the specific intelligence task involved.
 
-## Ipsum Dolor
+## Global Transfer Reasons
 
-Duis aute irure dolor in reprehenderit:
+These apply across **all** intelligence tasks:
 
-1. Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-2. Excepteur sint occaecat cupidatat non proident.
-3. Sunt in culpa qui officia deserunt mollit anim id est laborum.
+- The user is frustrated, upset or appears to be agitated, or uses ANY expletives.
+- The user appears to be angry or upset or uses toxic language.
+- The user asks to be transferred to another representative, or just requests to be transferred in general.
 
-## Consectetur
+---
 
-Sed ut perspiciatis unde omnis iste natus error:
-1. Nemo enim ipsam voluptatem
-2. Quis autem vel eum iure
-3. Neque porro quisquam est
-4. Temporibus autem quibusdam
-5. Et harum quidem rerum
+## Right Party Verification
 
-... et cetera!
+### Gather Identity Information
+- If the user refuses to provide any piece of information.
+- The user wants to speak to a different agent, to a different department, or to a supervisor, or to someone else, or to a human.
+
+### Gather Callback Number
+- The user will not provide a phone number.
+
+### Gather Name/Address Retry
+- If the user refuses to provide their name/address again.
+
+---
+
+## Verification
+
+If the caller fails verification, the call will be tranferred to a live rep. ***(see Right Party Verification document for criteria)***
+
+## Multi Choice Prompt
+- If the user refuses to provide an option.
+
+---
+
+## Call Handling
+- If the user wants to make a payment.
+- If the user wants to set up a payment arrangement.
+- If the user wants to add their balance to their current payment arrangement.
+- If the user still has questions about their balance or about something else.
+- If the user wants to check the account balance of their husband, wife, child, etc.
+- If the user has any other questions about their payment arrangement.
+- If the user wants an explanation of their balance/what the balance is for.
+- If the user disputes the balance and is upset about it.
+
+## Arbitration
+
+In some cases the AI models may disagree as to which course of action should occur next, this is called an arbitration and always results in a forced transfer. Arbitrations can happen at any point during the conversation.
+
+Example:
+
+The Action Model decides its time to transition in the call (i.e. it believes the Conversation Model has acheived it's goal of gathering the caller's identifying information). However, the Conversation Model tries to continue the conversation (i.e. for some reason it believes it still needs to gather more information).

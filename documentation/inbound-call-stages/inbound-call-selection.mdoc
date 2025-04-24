@@ -6,23 +6,15 @@ order: 1000
 status: "published"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+Calls will be **selected** for the pilot based on the following criteria:
 
-## Ipsum Dolor
+1. The inbound phone number matches a Berkshire patient account.
+2. The call quota for the pilot is open (e.g., if the quota is 1, it remains open until one call is transferred to Electrify).
+3. Electrify returns a successful "Health Check" before the transfer.
+4. Call data is successfully posted to the cache.
 
-Duis aute irure dolor in reprehenderit:
+Calls that will **not be selected** for the pilot will follow Encore's standard inbound call process. These calls include:
 
-1. Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-2. Excepteur sint occaecat cupidatat non proident.
-3. Sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-## Consectetur
-
-Sed ut perspiciatis unde omnis iste natus error:
-1. Nemo enim ipsam voluptatem
-2. Quis autem vel eum iure
-3. Neque porro quisquam est
-4. Temporibus autem quibusdam
-5. Et harum quidem rerum
-
-... et cetera!
+1. Cases where no RMeX data can be found for the inbound phone number.
+2. Calls originating from hospital phone numbers.
+3. Inbound numbers that match a patient account, but is not associated with Berkshire.
