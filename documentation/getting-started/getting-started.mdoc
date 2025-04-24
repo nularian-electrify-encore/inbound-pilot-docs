@@ -1,28 +1,38 @@
 ---
 title: "Getting started"
-description: "Encore inbound pilot. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+description: "Encore inbound pilot."
 publishedAt: 2025-01-11
 order: 0
 status: "published"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+Welcome to the **Encore Inbound Pilot** documentation. This guide provides a high-level technical overview of how the inbound call system works, including call flow logic, selection criteria, IVR behavior, and Electrify's role in handling calls.
 
-## Ipsum Dolor
+## 🔄 Call Flow at a Glance
 
-Duis aute irure dolor in reprehenderit:
+1. **Inbound Call Received**
+   - Calls enter via Sytel and follow the standard IVR path.
 
-1. Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-2. Excepteur sint occaecat cupidatat non proident.
-3. Sunt in culpa qui officia deserunt mollit anim id est laborum.
+2. **IVR Selection**
+   - Self-service options are offered.
+   - Certain selections qualify the call for further handling by Electrify.
 
-## Consectetur
+3. **Eligibility Check**
+   - The system evaluates if the call meets criteria for the pilot [Call Selection](./call-selection.md)]
 
-Sed ut perspiciatis unde omnis iste natus error:
-1. Nemo enim ipsam voluptatem
-2. Quis autem vel eum iure
-3. Neque porro quisquam est
-4. Temporibus autem quibusdam
-5. Et harum quidem rerum
+4. **Routing**
+   - Eligible calls are transferred to Electrify for verification and handling.
+   - Others follow Encore's standard inbound process.
 
-... et cetera!
+---
+
+## ✅ Electrify's Role
+
+- Verifying caller identity
+- Determining call intent
+- Handling check balance intents
+- Escalating calls when needed (e.g., frustration, refusal to verify, explicit requests)
+
+---
+
+For deeper insight into specific parts of the system, continue with the sections on [Call Selection](./call-selection.md), [IVR Flow](./ivr-flow.md), and [Transfer Rules](./transferring-calls.md).
