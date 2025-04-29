@@ -94,13 +94,13 @@ Not all collected information is used for verification purposes. Below is a brea
 
 ## Summary
 
-| Information Type   | Used for Verification  | Notes                                                                 |
-|--------------------|------------------------|-----------------------------------------------------------------------|
-| Inbound Number     | ✅ Yes                 | Calling inbound number that gets a match in RMeX                      |
-| Patient Status     | ❌ No                  | Determines call routing, not identity                                 |
-| First & Last Name  | ✅ Yes                 | Phonetic algorithm with 0.85 threshold                                |
-| Date of Birth      | ❌ No                  | Collected but not used in verification                                |
-| Address            | ✅ Yes                 | Multi-path comparison with 0.80 threshold                             |
+| Information Type      | Used for Verification     | Notes                                                                 |
+|-----------------------|---------------------------|-----------------------------------------------------------------------|
+| Inbound Number        | ✅ Yes                    | Calling inbound number that gets a match in RMeX                      |
+| Patient Status        | ❌ No                     | Determines call routing, not identity                                 |
+| First & Last Name     | ✅ Yes                    | Phonetic algorithm with 0.85 threshold                                |
+| Date of Birth         | ❌ No                     | Collected but not used in verification                                |
+| Address               | ✅ Yes                    | Multi-path comparison with 0.80 threshold                             |
 
 ---
 
@@ -120,11 +120,11 @@ Once all relevant identifying information has been gathered and processed, the n
 
 ### Example Scenarios
 
-| Name Verified | Address Verified | Result          | Action Taken                              |
-|---------------|------------------|-----------------|-------------------------------------------|
-| ✅ Yes        | ✅ Yes            | ✅ Verified     | AI continues assisting the caller         |
-| ❌ No         | ✅ Yes            | ❌ Not Verified | Caller asked to repeat name               |
-| ✅ Yes        | ❌ No             | ❌ Not Verified | Caller asked to repeat address            |
-| ❌ No         | ❌ No             | ❌ Not Verified | Caller transferred to a live rep          |
+| Name Verified    | Address Verified    | Result              | Action Taken                              |
+|------------------|---------------------|---------------------|-------------------------------------------|
+| ✅ Yes           | ✅ Yes               | ✅ Verified         | AI continues assisting the caller         |
+| ❌ No            | ✅ Yes               | ❌ Not Verified     | Caller asked to repeat name               |
+| ✅ Yes           | ❌ No                | ❌ Not Verified     | Caller asked to repeat address            |
+| ❌ No            | ❌ No                | ❌ Not Verified     | Caller transferred to a live rep          |
 
 ---
