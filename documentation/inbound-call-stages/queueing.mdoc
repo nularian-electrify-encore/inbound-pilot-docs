@@ -6,23 +6,18 @@ order: 1000
 status: "published"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+This document outlines Electrify's queuing and dequeueing process.
 
-## Ipsum Dolor
+## Queue
 
-Duis aute irure dolor in reprehenderit:
+When a call is transferred to Electrify the following occurs:
 
-1. Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-2. Excepteur sint occaecat cupidatat non proident.
-3. Sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. A static message, "please hold while we connect you to the next available agent".
+2. Call is queued.
+3. Workflow is started.
+4. AI agent is initialized.
+5. Pre-call prep.
 
-## Consectetur
+## Dequeue
 
-Sed ut perspiciatis unde omnis iste natus error:
-1. Nemo enim ipsam voluptatem
-2. Quis autem vel eum iure
-3. Neque porro quisquam est
-4. Temporibus autem quibusdam
-5. Et harum quidem rerum
-
-... et cetera!
+The call is then dequeued and right party verification begins.
