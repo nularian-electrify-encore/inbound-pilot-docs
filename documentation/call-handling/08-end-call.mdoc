@@ -6,23 +6,19 @@ order: 2000
 status: "published"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+This document outlines end-of-call handling when calls are transferred or when a call ends.
 
-## Ipsum Dolor
+## Transfer
 
-Duis aute irure dolor in reprehenderit:
+When a transfer occurs, the following occurs:
 
-1. Voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-2. Excepteur sint occaecat cupidatat non proident.
-3. Sunt in culpa qui officia deserunt mollit anim id est laborum.
+1. Call is queued in Electrify with a static transfer message, "please hold while I transfer you to a patient service representative".
+2. Call is transferred to Sytel with another static message, "please hold while we connect you to the next available agent".
+3. Electrify workflow ends.
 
-## Consectetur
+## End of Call
 
-Sed ut perspiciatis unde omnis iste natus error:
-1. Nemo enim ipsam voluptatem
-2. Quis autem vel eum iure
-3. Neque porro quisquam est
-4. Temporibus autem quibusdam
-5. Et harum quidem rerum
+When a call ends naturally (e.g. the caller has been helped and has no further questions), the following occurs:
 
-... et cetera!
+1. Static goodbye message, "Thanks for calling Berkshire health systems, goodbye".
+2. Electrify workflow ends.
