@@ -120,41 +120,11 @@ Once all relevant identifying information has been gathered and processed, the n
 
 ### Example Scenarios
 
-<table>
-  <thead>
-    <tr>
-      <th style="padding: 8px;">Name Verified</th>
-      <th style="padding: 8px;">Address Verified</th>
-      <th style="padding: 8px;">Result</th>
-      <th style="padding: 8px;">Action Taken</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 8px;">✅ Yes</td>
-      <td style="padding: 8px;">✅ Yes</td>
-      <td style="padding: 8px;">✅ Verified</td>
-      <td style="padding: 8px;">AI continues assisting the caller</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;">❌ No</td>
-      <td style="padding: 8px;">✅ Yes</td>
-      <td style="padding: 8px;">❌ Not Verified</td>
-      <td style="padding: 8px;">Caller asked to repeat name</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;">✅ Yes</td>
-      <td style="padding: 8px;">❌ No</td>
-      <td style="padding: 8px;">❌ Not Verified</td>
-      <td style="padding: 8px;">Caller asked to repeat address</td>
-    </tr>
-    <tr>
-      <td style="padding: 8px;">❌ No</td>
-      <td style="padding: 8px;">❌ No</td>
-      <td style="padding: 8px;">❌ Not Verified</td>
-      <td style="padding: 8px;">Caller transferred to a live rep</td>
-    </tr>
-  </tbody>
-</table>
+| Name Verified    | Address Verified    | Result              | Action Taken                              |
+|------------------|---------------------|---------------------|-------------------------------------------|
+| ✅ Yes           | ✅ Yes               | ✅ Verified         | AI continues assisting the caller         |
+| ❌ No            | ✅ Yes               | ❌ Not Verified     | Caller asked to repeat name               |
+| ✅ Yes           | ❌ No                | ❌ Not Verified     | Caller asked to repeat address            |
+| ❌ No            | ❌ No                | ❌ Not Verified     | Caller transferred to a live rep          |
 
 ---
