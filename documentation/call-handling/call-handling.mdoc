@@ -1,6 +1,6 @@
 ---
 title: "Call Handling"
-description: "Encore inbound pilot. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+description: "Encore inbound pilot."
 publishedAt: 2025-01-11
 order: 2000
 status: "published"
@@ -14,14 +14,14 @@ RPV ensures the caller is the correct patient on the account by gathering and ve
 
 ### Process Overview
 
-- **Step 1: Collect Information**  
+**Step 1: Collect Information**  
   The assistant collects the caller's:
   - First and last name  
   - Date of birth  
   - Full address (street, city, state, ZIP)
 
-- **Step 2: Verify Key Data Points**
-  - **Inbound Number**: Used to pre-filter eligible calls.  
+**Step 2: Verify Key Data Points**
+  - **Inbound Number**: Calling inbound number that gets a match in RMeX.  
   - **Name**: Verified via phonetic comparison algorithm.  
   - **Address**: Verified using similarity-based logic.  
   - **Date of Birth**: Collected but not used for verification.  
@@ -38,15 +38,15 @@ RPV ensures the caller is the correct patient on the account by gathering and ve
 
 After verification, the assistant asks the caller to select their reason for calling:
 
-- **Check Balance**  
+**Check Balance**  
   - Balance is provided.
   - Call ends if no further questions.
   - More complex requests → Transferred.
 
-- **Statement Questions**  
+**Statement Questions**  
   - Call is transferred.
 
-- **Something Else**  
+**Something Else**  
   - Caller is prompted to describe the issue.
   - Call is transferred.
 
@@ -94,4 +94,4 @@ Applies at any point during the call:
 
 - A static message plays:  
   `"Thanks for calling Berkshire Health Systems, goodbye."`
-- Workflow ends cleanly.
+- Electrify workflow ends.
