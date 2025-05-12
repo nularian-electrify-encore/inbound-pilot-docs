@@ -6,92 +6,16 @@ order: 2000
 status: "published"
 ---
 
-This document summarizes the AI assistant's call handling process across verification, intent gathering, call routing, and resolution during the Encore inbound pilot.
+## Sections
 
-## Right Party Verification (RPV)
+[Call Selection](https://electrify-dev.nularian.com/home/inbound-pilot/docs/inbound-call-stages/02-inbound-call-selection)
 
-RPV ensures the caller is the correct patient on the account by gathering and verifying identifying details.
+[Inbound IVR](https://electrify-dev.nularian.com/home/inbound-pilot/docs/inbound-call-stages/03-inbound-ivr)
 
-### Process Overview
+[Right Party Verification](https://electrify-dev.nularian.com/home/inbound-pilot/docs/call-handling/02-right-party-verification)
 
-**Step 1: Collect Information**  
-  The AI assistant collects the caller's:
-  - First and last name  
-  - Date of birth  
-  - Full address (street, city, state, ZIP)
+[Gather Intent](https://electrify-dev.nularian.com/home/inbound-pilot/docs/call-handling/03-gather-intent)
 
-**Step 2: Verify Key Data Points**
-  - **Inbound Number**: Calling inbound number that gets a match in RMeX.  
-  - **Name**: Verified via phonetic comparison algorithm.  
-  - **Address**: Verified using similarity-based logic.  
-  - **Date of Birth**: Collected but not used for verification.  
-  - **Patient Status**: Used for routing, not verification.
+[Transferring Calls](https://electrify-dev.nularian.com/home/inbound-pilot/docs/call-handling/04-transfer-call)
 
-### Outcome
-
-- ✅ **Verified**: Both name and address meet criteria — AI proceeds.  
-- ❌ **Not Verified**: Caller is asked to retry or transferred.
-
----
-
-## 2. Call Intent Gathering
-
-After verification, the assistant asks the caller to select their reason for calling:
-
-**Check Balance**  
-  - Balance is provided.
-  - Call ends if there are no further questions.
-  - Additional questions → Transferred.
-
-**Statement Questions**  
-  - Call is transferred.
-
-**Something Else**  
-  - Caller is prompted to describe the reason for their call.
-  - Call is transferred.
-
----
-
-## 3. Transferring Calls
-
-### Global Transfer Conditions
-
-Applies at any point during the call:
-
-- Caller is upset, agitated, or uses inappropriate language.
-- Caller requests a transfer.
-
-### RPV-Specific Transfers
-
-- Caller declines to provide name/address.
-- Caller fails verification.
-
-### Intent Handling Transfers
-
-- Caller wants to:
-  - Make a payment
-  - Set up a payment arrangement
-  - Discuss someone else's account
-  - Ask complex or unresolved balance questions
-  - Dispute a balance
-
-### Arbitration Events
-
-- Internal disagreement between AI models results in a hard transfer.
-
----
-
-## 4. End of Call Handling
-
-### Transfer End
-
-- A static message plays:  
-  `"Please hold while I transfer you to a patient service representative."`
-- Call is routed to Sytel.
-- Electrify workflow ends.
-
-### Electrify End
-
-- A static message plays:  
-  `"Thanks for calling Berkshire Health Systems, goodbye."`
-- Electrify workflow ends.
+[End Call](https://electrify-dev.nularian.com/home/inbound-pilot/docs/call-handling/05-end-call)
