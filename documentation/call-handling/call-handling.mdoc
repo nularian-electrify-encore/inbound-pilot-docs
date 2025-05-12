@@ -15,7 +15,7 @@ RPV ensures the caller is the correct patient on the account by gathering and ve
 ### Process Overview
 
 **Step 1: Collect Information**  
-  The assistant collects the caller's:
+  The AI assistant collects the caller's:
   - First and last name  
   - Date of birth  
   - Full address (street, city, state, ZIP)
@@ -40,14 +40,14 @@ After verification, the assistant asks the caller to select their reason for cal
 
 **Check Balance**  
   - Balance is provided.
-  - Call ends if no further questions.
-  - More complex requests → Transferred.
+  - Call ends if there are no further questions.
+  - Additional questions → Transferred.
 
 **Statement Questions**  
   - Call is transferred.
 
 **Something Else**  
-  - Caller is prompted to describe the issue.
+  - Caller is prompted to describe the reason for their call.
   - Call is transferred.
 
 ---
@@ -90,7 +90,7 @@ Applies at any point during the call:
 - Call is routed to Sytel.
 - Electrify workflow ends.
 
-### Natural End
+### Electrify End
 
 - A static message plays:  
   `"Thanks for calling Berkshire Health Systems, goodbye."`
