@@ -48,14 +48,36 @@ Below are the possible transfer reasons for when the AI is assisting the caller 
 - If the user wants to add their balance to their current payment arrangement.
 - If the user still has questions about their balance or about something else.
 - If the user wants to check the account balance of their husband, wife, child, etc.
-- If the user has any other questions about their payment arrangement.
+- If the user has any questions about their payment arrangement outside of information about their last or next payment.
 - If the user wants an explanation of their balance/what the balance is for.
 - If the user disputes the balance and is upset about it.
 
 ## Arbitration
 
-In some cases the AI models may disagree as to which course of action should occur next, this is called arbitration and always results in a forced transfer. Arbitrations can happen at any point during the conversation.
+In some cases the AI models may disagree as to which course of action should occur next, this is called arbitration and always results in a forced transfer. 
 
-Example:
+## When Does Arbitration Happen?
+Arbitrations can occur at any point during the conversation. but it is most commonly triggered when one model believes the system should proceed to a new state, while another model does not. 
+Typically, this involves a conflict between the Action Model and the Conversation Model:
 
-The Action Model decides its time to transition in the call (i.e. it believes the Conversation Model has acheived it's goal of gathering the caller's identifying information). However, the Conversation Model tries to continue the conversation (i.e. for some reason it believes it still needs to gather more information).
+-The Action Model is responsible for determining when to take high-level actions, such as transferring to a human, executing a transition, or remaining within an intelligence task (no action).
+-The Conversation Model is focused on the flow of dialogue, such as asking questions, and gathering information or inputs from the user.
+
+### Example Scenario
+
+- The **Conversation Model** has been collecting the caller's identifying information (e.g., name, date of birth, address).
+- At some point, the **Action Model** determines that sufficient information has been gathered and it's time to transition to gathering the caller's intent.
+- However, the **Conversation Model** continues prompting the user for information, thinking it has not achieved its goal.
+
+This misalignment results in **arbitration**. Since the system's models are no longer in agreement and could lead to user confusion or a conversational loop, a **forced transfer** occurs to ensure continuity and avoid frustration.
+
+### Why Forced Transfer?
+
+Transferring because of arbitration is an intentional safeguard designed to preserve reliability and prevent degraded user experiences due to model disagreement. 
+
+Rather than risk:
+-Repetitive or conflicting prompts,  
+-Redundant data collection,  
+-Misinterpretation of user intent,  
+
+…the system escalates to a live representative. This maintains a high standard of user experience and trust.
