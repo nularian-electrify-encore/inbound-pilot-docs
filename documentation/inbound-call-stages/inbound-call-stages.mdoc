@@ -6,24 +6,21 @@ order: 1000
 status: "published"
 ---
 
-This document provides a high-level summary of the stages involved in handling inbound calls for the Encore pilot, from selection to final routing and handling.
+A summary of the stages involved in handling inbound calls. These stages can be found on the "Active" page.
 
-## Call Selection
+## Queued
 
-Inbound calls are evaluated against defined criteria to determine eligibility for the Electrify pilot. Calls that qualify are prepared for transfer; all others continue through Encore's standard process.
+Calls meeting pilot criteria are transferred and queued within Electrify, initiating a series of preparatory steps before being answered.
 
-## Inbound IVR
+## Dequeueing
 
-All calls enter the existing Encore IVR system. Based on the caller's selection, the call is either routed to self-service options or considered for pilot handling (if they meet the selection criteria).
+The called is beling dequeued within Electrify. 
 
-## Call Routing
+## Handling
 
-Self-service options (e.g., payments or itemized statements) proceed as usual. Calls directed to a live agent and meeting pilot criteria are transferred to Electrify for further processing.
+After the call is dequeued the system begins right party verification and potential handling.
 
-## Transfer to Electrify
+## Transferring
 
-Selected calls are routed from Sytel to Twilio. If required, calls may be returned to Sytel for live representative support.
+The call is being returned to Sytel for live representative support.
 
-## Queueing & Handling
-
-Transferred calls are queued within Electrify, initiating a series of preparatory steps before being answered. Once dequeued, the system begins right-party verification and potential handling.
